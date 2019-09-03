@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body>
+        <script
+        src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript">
+        const queryURL = "http://api.giphy.com/v1/gifs/search?q=sad&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM";
+
+        $.ajax({url:queryURL,method:"GET"})
+            .done(function(response){
+                console.log(response);
+            });
+
+    </script>
+  </body>
+
+</html>  
