@@ -9,8 +9,24 @@ h1 {
     color: white;
 }
 
+h3 {
+    color: white;
+}
+
 p {
     color: white;
     align-content: center;
     font-weight: bolder;
+}
+
+.activeContent {
+    text-align: center;
+    background-color: rgba(172, 255, 47, 0.74);
+    height: infinite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 5px;
 }

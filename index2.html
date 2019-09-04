@@ -13,12 +13,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
   
-<body>
-    <h1>How Are You Feeling Today?</h1>
-
-    <div id="buttonArea"></div>
-
-    <div id="GIFArea"> </div>
+<body class="container">
+    <div class="activeContent">
+        <h1>What Are You Feeling Today?</h1>
+        <h3>Choose from Paul Ekman's six basic emotions:</h3>
+        <div id="buttonArea"></div>
+        <h3>or add your own:</h3>
+        <div id="GIFArea" class="row"> </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript">
@@ -27,7 +29,7 @@
         //let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +topics[i]+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
 
         for(let i=0;i<topics.length;i++){
-            $("#buttonArea").append("<button data-search='"+topics[i]+"'>"+topics[i]+"</button>")
+            $("#buttonArea").append("<button type='button' class='btn btn-light' data-search='"+topics[i]+"'>"+topics[i]+"</button>")
             let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +topics[i]+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
         }
 
@@ -43,8 +45,7 @@
                 .done(function(response){
                 for(let i=0;i<response.data.length;i++){
                     let state = $(this).attr("data-state");
-                    $("#GIFArea").append("<p>Rating: "+response.data[i].rating+"</p>")
-                    $("#GIFArea").append("<img src='"+response.data[i].images.downsized_still.url+"' data-still='"+response.data[i].images.downsized_still.url+"' data-animate='"+response.data[i].images.downsized.url+"' data-state='still' class='gif'>");
+                    $("#GIFArea").prepend("<div class='col-sm'><img src='"+response.data[i].images.fixed_width_still.url+"' data-still='"+response.data[i].images.fixed_width_still.url+"' data-animate='"+response.data[i].images.fixed_width.url+"' data-state='still' class='gif'><p>Rating: "+response.data[i].rating+"</p>");
                     $(".gif").on("click", function() {
                             let state = $(this).attr("data-state");
                         if (state === "still") {
