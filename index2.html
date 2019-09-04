@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,9 +8,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
   
-  <body>
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  
+<body>
     <h1>How Are You Feeling Today?</h1>
 
     <div id="buttonArea"></div>
@@ -26,7 +29,6 @@
         for(let i=0;i<topics.length;i++){
             $("#buttonArea").append("<button data-search='"+topics[i]+"'>"+topics[i]+"</button>")
             let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +topics[i]+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
-
         }
 
         $("button").on("click", function(){
@@ -40,15 +42,41 @@
             $.ajax({url:queryURL,method:"GET"})
                 .done(function(response){
                 for(let i=0;i<response.data.length;i++){
+                    let state = $(this).attr("data-state");
                     $("#GIFArea").append("<p>Rating: "+response.data[i].rating+"</p>")
-                    $("#GIFArea").append("<img src='"+response.data[i].images.downsized.url+"'>");
+                    $("#GIFArea").append("<img src='"+response.data[i].images.downsized_still.url+"' data-still='"+response.data[i].images.downsized_still.url+"' data-animate='"+response.data[i].images.downsized.url+"' data-state='still' class='gif'>");
+                    $(".gif").on("click", function() {
+                            let state = $(this).attr("data-state");
+                        if (state === "still") {
+                            $(this).attr("src", $(this).attr("data-animate"));
+                            $(this).attr("data-state", "animate");
+                        } else {
+                            $(this).attr("src", $(this).attr("data-still"));
+                            $(this).attr("data-state", "still");
+                        }
+                    });
                 }
             });
+
+
+
+
+
+            // $(".url").on("click", function() {
+            //     let state = $(this).attr("data-state");
+            //     if (state === "still") {
+            //         $(this).attr("src", $(this).attr("data-animate"));
+            //         $(this).attr("data-state", "animate");
+            //     } else {
+            //         $(this).attr("src", $(this).attr("data-still"));
+            //         $(this).attr("data-state", "still");
+            //     }
+            // });
         })
         
 
     </script>
 
-  </body>
+</body>
 
 </html>  

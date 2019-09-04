@@ -1,0 +1,16 @@
+body {
+    background-image: url("images/inside_out.jpg");
+    background-position: top;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+h1 {
+    color: white;
+}
+
+p {
+    color: white;
+    align-content: center;
+    font-weight: bolder;
+}
