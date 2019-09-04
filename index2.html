@@ -13,38 +13,37 @@
   <body>
     <h1>How Are You Feeling Today?</h1>
 
-    <div id="buttonArea">
-    <button data-search="sad">sad</button>
-    <button data-search="happy">happy</button>
-    </div>
+    <div id="buttonArea"></div>
 
     <div id="GIFArea"> </div>
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript">
-        // const queryURL = "http://api.giphy.com/v1/gifs/search?q=sad&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM";
 
-        // $.ajax({url:queryURL,method:"GET"})
-        //     .done(function(response){
-        //         console.log(response);
-        //     });
+        let topics = ["anger","disgust","fear","happiness","sadness","surprise"];
+        //let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +topics[i]+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
+
+        for(let i=0;i<topics.length;i++){
+            $("#buttonArea").append("<button data-search='"+topics[i]+"'>"+topics[i]+"</button>")
+            let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +topics[i]+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
+
+        }
 
         $("button").on("click", function(){
+
             let x = $(this).data("search");
             console.log(x);
-            
+
             let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +x+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
             console.log(queryURL);
-
+            
             $.ajax({url:queryURL,method:"GET"})
                 .done(function(response){
-                    console.log(response.data[1].rating);
-                    for(let i=0;i<response.data.length;i++){
-                        $("#GIFArea").append("<p>Rating: "+response.data[i].rating+"</p>")
-                        $("#GIFArea").append("<img src='"+response.data[i].images.downsized.url+"'>");
-                    }
+                for(let i=0;i<response.data.length;i++){
+                    $("#GIFArea").append("<p>Rating: "+response.data[i].rating+"</p>")
+                    $("#GIFArea").append("<img src='"+response.data[i].images.downsized.url+"'>");
+                }
             });
-
         })
         
 
