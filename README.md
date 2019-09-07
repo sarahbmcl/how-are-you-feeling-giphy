@@ -1,6 +1,6 @@
 # How Are You Feeling, Giphy?
 
-This site can be found at:
+This site can be found at: https://sarahbmcl.github.io/how-are-you-feeling-giphy/
 
 This includes: html, bootstrap, css, javascript
 
