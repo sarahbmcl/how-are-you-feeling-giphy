@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,47 +8,29 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
   
-  <body>
-    <h1>How Are You Feeling Today?</h1>
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  
+<body class="container">
+    <div class="activeContent">
+        <h1>What Are You Feeling Today?</h1>
+        <h3>Choose from Paul Ekman's six basic emotions:</h3>
+        <div id="buttonArea"></div>
+        <h3>or add your own:</h3>
+        <form id="user-submission">
+            <input type="text" class="col-sm-2" id="user-input">
+            <button type="submit" class="btn btn-dark btn-sm" id="add-emotion">Add This</button>
+        </form>
+        <div id="GIFArea" class="row"> </div>
+    </div>
 
-    <div id="buttonArea"></div>
-    <button data-search="sad">sad</button>
-    <button data-search="happy">happy</button>
+    <!--jquery -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script> 
+    <!--my javascript -->
+    <script type="text/javascript" src="javascript/app.js"></script>
 
-    <div id="GIFArea"> </div>
-
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript">
-        // const queryURL = "http://api.giphy.com/v1/gifs/search?q=sad&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM";
-
-        // $.ajax({url:queryURL,method:"GET"})
-        //     .done(function(response){
-        //         console.log(response);
-        //     });
-
-        $("button").on("click", function(){
-            let x = $(this).data("search");
-            console.log(x);
-            
-            let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +x+ "&api_key=faY502M74RA3tid3YkAoqH7IWgz6NgoM&limit=10";
-            console.log(queryURL);
-
-            $.ajax({url:queryURL,method:"GET"})
-                .done(function(response){
-                    console.log(response.data[1].rating);
-                    for(let i=0;i<response.data.length;i++){
-                        $("#GIFArea").append("<p>Rating: "+response.data[i].rating+"</p>")
-                        $("#GIFArea").append("<img src='"+response.data[i].images.downsized.url+"'>");
-                    }
-            });
-
-        })
-        
-
-    </script>
-
-  </body>
+</body>
 
 </html>  
