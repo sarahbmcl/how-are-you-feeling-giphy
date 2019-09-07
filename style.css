@@ -7,6 +7,8 @@ body {
 
 h1 {
     color: white;
+    padding: 15px;
+    font-weight: bolder;
 }
 
 h3 {
@@ -29,4 +31,9 @@ p {
 
 button {
     margin: 5px;
+}
+
+#GIFArea {
+    padding: 15px;
+    margin-top: 15px;
 }

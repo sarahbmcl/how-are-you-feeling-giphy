@@ -1,4 +1,4 @@
-const topics = ["Anger", "Disgust", "Fear", "Happiness", "Sadness", "Surprise"];
+const topics = ["Angry", "Disgusted", "Fearful", "Happy", "Sad", "Surprised"];
 
 for (let i = 0; i < topics.length; i++) {
     $("#buttonArea").append("<button type='button' class='btn btn-light gif-button' data-search='" + topics[i] + "'>" + topics[i] + "</button>")
