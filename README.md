@@ -20,4 +20,5 @@ From here you can:
 - CSS
 - JavaScript
 - Bootstrap
+- JQuery
 - Giphy API
